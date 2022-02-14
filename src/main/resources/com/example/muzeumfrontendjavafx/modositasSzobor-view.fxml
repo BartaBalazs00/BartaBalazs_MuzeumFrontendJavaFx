@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.muzeumfrontendjavafx.controllers.modositSzoborController">
+<GridPane hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.muzeumfrontendjavafx.controllers.ModositSzoborController">
     <columnConstraints>
         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="200.0" />
@@ -15,17 +15,21 @@
         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <TextField fx:id="inputSzemely" promptText="Személy" GridPane.columnIndex="1" />
+        <TextField fx:id="inputPerson" promptText="Személy" GridPane.columnIndex="1" />
         <Label text="Személy" />
         <Label text="Magasság" GridPane.rowIndex="1" />
         <Label text="ár" GridPane.rowIndex="2" />
-        <TextField fx:id="inputMagassag" promptText="Magasság" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <Spinner fx:id="inputAr" editable="true" minWidth="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+        <Spinner fx:id="inputPrice" editable="true" minWidth="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
             <valueFactory>
-                <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="10" initialValue="100" max="999" min="1" />
+                <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="10" max="999999999"  min="1" />
             </valueFactory>
         </Spinner>
 
         <Button minWidth="100.0" mnemonicParsing="false" onAction="#onModositButtonClick" prefWidth="200.0" text="Módosítás" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
+      <Spinner fx:id="inputHeight" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" >
+          <valueFactory>
+              <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="10" max="999999999"  min="1" />
+          </valueFactory>
+      </Spinner>
     </children>
 </GridPane>

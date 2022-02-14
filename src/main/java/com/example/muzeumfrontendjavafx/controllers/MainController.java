@@ -1,16 +1,18 @@
 package com.example.muzeumfrontendjavafx.controllers;
 
-import com.example.muzeumfrontendjavafx.Painting;
-import com.example.muzeumfrontendjavafx.Statue;
+import com.example.muzeumfrontendjavafx.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class MainController {
+import java.io.IOException;
+import java.util.List;
+
+public class MainController extends Controller {
     @FXML
-    public TableView<Statue> szobrokTable;
+    public TableView<Statue> statuesTable;
     @FXML
     public TableColumn<Statue, String> colPerson;
     @FXML
@@ -18,7 +20,7 @@ public class MainController {
     @FXML
     public TableColumn<Statue, Integer> colPrice;
     @FXML
-    public TableView<Painting> festmenyekTable;
+    public TableView<Painting> paintingsTable;
     @FXML
     public TableColumn<Painting, String> colTitle;
     @FXML
@@ -32,13 +34,30 @@ public class MainController {
         colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
         colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         colYear.setCellValueFactory(new PropertyValueFactory<>("year"));
-        colOnDisplay.setCellValueFactory(new PropertyValueFactory<>("onDisplay"));
-
+        colOnDisplay.setCellValueFactory(new PropertyValueFactory<>("on_display"));
+        statueListaFeltolt();
+        PaintingListaFeltolt();
     }
     public void onSzoborHozzaadButtonClick(ActionEvent actionEvent) {
+
     }
 
     public void onSzoborModositasButtonClick(ActionEvent actionEvent) {
+        int selectedIndex = statuesTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex == -1) {
+            alert("A módosításhoz előbb válasszon ki egy elemet a táblázatból");
+            return;
+        }
+        Statue modositando = statuesTable.getSelectionModel().getSelectedItem();
+        try {
+            ModositSzoborController modositas = (ModositSzoborController) ujAblak("modositasSzobor-view.fxml",
+                    "Szobor módosítása", 320, 400);
+            modositas.setModositando(modositando);
+            modositas.getStage().setOnHiding(event -> statuesTable.refresh());
+            modositas.getStage().show();
+        } catch (IOException e) {
+            hibaKiir(e);
+        }
     }
 
     public void onSzoborTorlesButtonClick(ActionEvent actionEvent) {
@@ -48,8 +67,45 @@ public class MainController {
     }
 
     public void onFestmenyModositasButtonClick(ActionEvent actionEvent) {
+        int selectedIndex = paintingsTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex == -1) {
+            alert("A módosításhoz előbb válasszon ki egy elemet a táblázatból");
+            return;
+        }
+        Painting modositando = paintingsTable.getSelectionModel().getSelectedItem();
+        try {
+            ModositFestmenyController modositas = (ModositFestmenyController) ujAblak("modositasFestmeny-view.fxml",
+                    "Festmény módosítása", 320, 400);
+            modositas.setModositando(modositando);
+            modositas.getStage().setOnHiding(event -> paintingsTable.refresh());
+            modositas.getStage().show();
+        } catch (IOException e) {
+            hibaKiir(e);
+        }
     }
 
     public void onFestmenyTorlesButtonClick(ActionEvent actionEvent) {
+    }
+    private void statueListaFeltolt() {
+        try {
+            List<Statue> statueList = StatueApi.getStatues();
+            statuesTable.getItems().clear();
+            for (Statue statue : statueList) {
+                statuesTable.getItems().add(statue);
+            }
+        } catch (IOException e) {
+            hibaKiir(e);
+        }
+    }
+    private void PaintingListaFeltolt() {
+        try {
+            List<Painting> paintingList = PaintingApi.getPaintings();
+            paintingsTable.getItems().clear();
+            for (Painting painting : paintingList) {
+                paintingsTable.getItems().add(painting);
+            }
+        } catch (IOException e) {
+            hibaKiir(e);
+        }
     }
 }

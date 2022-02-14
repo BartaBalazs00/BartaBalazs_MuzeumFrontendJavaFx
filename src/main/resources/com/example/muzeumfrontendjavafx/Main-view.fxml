@@ -31,7 +31,7 @@
                               </Button>
                            </children>
                         </HBox>
-                        <TableView fx:id="szobrokTable" prefHeight="263.0" prefWidth="600.0">
+                        <TableView fx:id="statuesTable" prefHeight="263.0" prefWidth="600.0">
                           <columns>
                             <TableColumn fx:id="colPerson" prefWidth="250.0" text="személy" />
                             <TableColumn fx:id="colHeight" prefWidth="150.0" text="magasság" />
@@ -68,7 +68,7 @@
                               </Button>
                            </children>
                         </HBox>
-                        <TableView fx:id="festmenyekTable" prefHeight="274.0" prefWidth="600.0">
+                        <TableView fx:id="paintingsTable" prefHeight="274.0" prefWidth="600.0">
                           <columns>
                               <TableColumn fx:id="colTitle" prefWidth="250.0" text="Cím" />
                               <TableColumn fx:id="colYear" prefWidth="150.0" text="Év" />

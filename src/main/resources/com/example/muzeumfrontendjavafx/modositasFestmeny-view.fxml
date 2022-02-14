@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.muzeumfrontendjavafx.controllers.modositFestmenyController">
+<GridPane hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.muzeumfrontendjavafx.controllers.ModositFestmenyController">
     <columnConstraints>
         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="200.0" />
@@ -16,18 +16,18 @@
         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <TextField fx:id="inputCim" promptText="Cím" GridPane.columnIndex="1" />
+        <TextField fx:id="inputTitle" promptText="Cím" GridPane.columnIndex="1" />
         <Label text="Cím" />
         <Label text="Év" GridPane.rowIndex="1" />
         <Label text="Kiállítva" GridPane.rowIndex="2" />
-        <Spinner fx:id="inputEv" editable="true" minWidth="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
+        <Spinner fx:id="inputYear" editable="true" minWidth="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
             <valueFactory>
-                <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="10" initialValue="2000" max="3000" min="1" />
+                <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="10" initialValue="2000" max="3000" min="-30000" />
             </valueFactory>
         </Spinner>
 
         <Button minWidth="100.0" mnemonicParsing="false" onAction="#onModositButtonClick" prefWidth="200.0" text="Módosítás" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
-      <CheckBox fx:id="inputKiallitva" mnemonicParsing="false" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <CheckBox fx:id="inputOnDisplay" mnemonicParsing="false" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
