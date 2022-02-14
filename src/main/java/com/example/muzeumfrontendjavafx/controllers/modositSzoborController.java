@@ -1,4 +1,4 @@
-package com.example.muzeumfrontendjavafx;
+package com.example.muzeumfrontendjavafx.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

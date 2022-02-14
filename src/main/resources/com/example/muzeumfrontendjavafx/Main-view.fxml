@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.muzeumfrontendjavafx.controllers.MainController">
   <tabs>
     <Tab text="szobrok">
       <content>
@@ -33,9 +33,9 @@
                         </HBox>
                         <TableView fx:id="szobrokTable" prefHeight="263.0" prefWidth="600.0">
                           <columns>
-                            <TableColumn fx:id="colSzemely" prefWidth="250.0" text="személy" />
-                            <TableColumn fx:id="colMagassag" prefWidth="150.0" text="magasság" />
-                            <TableColumn fx:id="colAr" prefWidth="200.0" text="ár" />
+                            <TableColumn fx:id="colPerson" prefWidth="250.0" text="személy" />
+                            <TableColumn fx:id="colHeight" prefWidth="150.0" text="magasság" />
+                            <TableColumn fx:id="colPrice" prefWidth="200.0" text="ár" />
                           </columns>
                         </TableView>
                      </children>
@@ -70,9 +70,9 @@
                         </HBox>
                         <TableView fx:id="festmenyekTable" prefHeight="274.0" prefWidth="600.0">
                           <columns>
-                              <TableColumn fx:id="colCim" prefWidth="250.0" text="Cím" />
-                              <TableColumn fx:id="colEv" prefWidth="150.0" text="Év" />
-                              <TableColumn fx:id="colKiallitva" prefWidth="200.0" text="Ki van e állítva" />
+                              <TableColumn fx:id="colTitle" prefWidth="250.0" text="Cím" />
+                              <TableColumn fx:id="colYear" prefWidth="150.0" text="Év" />
+                              <TableColumn fx:id="colOnDisplay" prefWidth="200.0" text="Ki van e állítva" />
                           </columns>
                         </TableView>
                      </children>
