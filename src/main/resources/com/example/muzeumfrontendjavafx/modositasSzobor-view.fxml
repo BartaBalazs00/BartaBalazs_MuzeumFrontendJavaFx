@@ -19,14 +19,14 @@
         <Label text="Személy" />
         <Label text="Magasság" GridPane.rowIndex="1" />
         <Label text="ár" GridPane.rowIndex="2" />
-        <Spinner fx:id="inputPrice" editable="true" minWidth="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+        <Spinner fx:id="inputPrice" editable="true"  minWidth="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
             <valueFactory>
                 <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="10" max="999999999"  min="1" />
             </valueFactory>
         </Spinner>
 
         <Button minWidth="100.0" mnemonicParsing="false" onAction="#onModositButtonClick" prefWidth="200.0" text="Módosítás" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
-      <Spinner fx:id="inputHeight" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" >
+      <Spinner fx:id="inputHeight" editable="true" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" >
           <valueFactory>
               <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="10" max="999999999"  min="1" />
           </valueFactory>
