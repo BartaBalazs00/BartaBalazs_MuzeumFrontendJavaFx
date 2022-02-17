@@ -39,7 +39,14 @@ public class MainController extends Controller {
         paintingListaFeltolt();
     }
     public void onSzoborHozzaadButtonClick(ActionEvent actionEvent) {
-
+        try {
+            Controller hozzadas = ujAblak("hozzaadasSzobor-view.fxml", "Szobor hozzáadása",
+                    320, 400);
+            hozzadas.getStage().setOnCloseRequest(event -> statueListaFeltolt());
+            hozzadas.getStage().show();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 
     public void onSzoborModositasButtonClick(ActionEvent actionEvent) {
@@ -80,6 +87,14 @@ public class MainController extends Controller {
     }
 
     public void onFestmenyHozzaadasButtonClick(ActionEvent actionEvent) {
+        try {
+            Controller hozzadas = ujAblak("hozzaadasFestmeny-view.fxml", "Festmény hozzáadása",
+                    320, 400);
+            hozzadas.getStage().setOnCloseRequest(event -> paintingListaFeltolt());
+            hozzadas.getStage().show();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 
     public void onFestmenyModositasButtonClick(ActionEvent actionEvent) {
@@ -111,7 +126,7 @@ public class MainController extends Controller {
             return;
         }
         try {
-            boolean sikeres = StatueApi.deleteStatue(torlendo.getId());
+            boolean sikeres = PaintingApi.deletePainting(torlendo.getId());
             alert(sikeres ? "Sikeres törlés": "Sikertele törlés");
             paintingListaFeltolt();
         } catch (IOException e) {
