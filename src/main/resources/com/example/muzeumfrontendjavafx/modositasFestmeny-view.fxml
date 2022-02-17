@@ -22,7 +22,7 @@
         <Label text="Kiállítva" GridPane.rowIndex="2" />
         <Spinner fx:id="inputYear" editable="true" minWidth="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
             <valueFactory>
-                <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="10" initialValue="2000" max="3000" min="-30000" />
+                <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="10" initialValue="2000" max="2022" min="-30000" />
             </valueFactory>
         </Spinner>
 

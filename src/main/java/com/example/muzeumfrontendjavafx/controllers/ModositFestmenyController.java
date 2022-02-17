@@ -24,36 +24,22 @@ public class ModositFestmenyController extends Controller {
     private Painting modositando;
     @FXML
     public void onModositButtonClick(ActionEvent actionEvent) {
-        /*String title = inputTitle.getText().trim();
+        String title = inputTitle.getText().trim();
         boolean onDisplay = inputOnDisplay.isSelected();
-        int year = inputYear.getValue();
+        int year;
         if (title.isEmpty()){
             alert("Cím megadása kötelező");
             return;
         }
-        if (year == null){
-            alert("Kategória megadása kötelező");
-            return;
-        }
         try {
-            hossz = inputHossz.getValue();
+            year = inputYear.getValue();
         } catch (NullPointerException ex){
-            alert("A hossz megadása kötelező");
+            alert("Az év megadása kötelező");
             return;
         } catch (Exception ex){
-            alert("A hossz csak 1 és 999 közötti szám lehet");
+            alert("Az év csak -30000 és 2022 közötti szám lehet");
             return;
         }
-        if (hossz < 1 || hossz > 999) {
-            alert("A hossz csak 1 és 999 közötti szám lehet");
-            return;
-        }
-        if (ertekelesIndex == -1){
-            alert("Értékelés kiválasztása köztelező");
-            return;
-        }
-        int ertekeles = inputErtekeles.getValue();
-
         modositando.setTitle(title);
         modositando.setYear(year);
         modositando.setOn_display(onDisplay);
@@ -68,7 +54,7 @@ public class ModositFestmenyController extends Controller {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
     public Painting getModositando() {
         return modositando;
