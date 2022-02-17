@@ -36,7 +36,7 @@ public class MainController extends Controller {
         colYear.setCellValueFactory(new PropertyValueFactory<>("year"));
         colOnDisplay.setCellValueFactory(new PropertyValueFactory<>("on_display"));
         statueListaFeltolt();
-        PaintingListaFeltolt();
+        paintingListaFeltolt();
     }
     public void onSzoborHozzaadButtonClick(ActionEvent actionEvent) {
 
@@ -61,6 +61,22 @@ public class MainController extends Controller {
     }
 
     public void onSzoborTorlesButtonClick(ActionEvent actionEvent) {
+        int selectedIndex = statuesTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex == -1){
+            alert("A törléshez előbb válasszon ki egy elemet a táblázatból");
+            return;
+        }
+        Statue torlendo = statuesTable.getSelectionModel().getSelectedItem();
+        if (!confirm("Biztos hogy törölni szeretné az alábbi szobrot?: "+torlendo.getPerson())){
+            return;
+        }
+        try {
+            boolean sikeres = StatueApi.deleteStatue(torlendo.getId());
+            alert(sikeres ? "Sikeres törlés": "Sikertele törlés");
+            statueListaFeltolt();
+        } catch (IOException e) {
+            hibaKiir(e);
+        }
     }
 
     public void onFestmenyHozzaadasButtonClick(ActionEvent actionEvent) {
@@ -85,6 +101,22 @@ public class MainController extends Controller {
     }
 
     public void onFestmenyTorlesButtonClick(ActionEvent actionEvent) {
+        int selectedIndex = paintingsTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex == -1){
+            alert("A törléshez előbb válasszon ki egy elemet a táblázatból");
+            return;
+        }
+        Painting torlendo = paintingsTable.getSelectionModel().getSelectedItem();
+        if (!confirm("Biztos hogy törölni szeretné az alábbi festményt?: "+torlendo.getTitle())){
+            return;
+        }
+        try {
+            boolean sikeres = StatueApi.deleteStatue(torlendo.getId());
+            alert(sikeres ? "Sikeres törlés": "Sikertele törlés");
+            paintingListaFeltolt();
+        } catch (IOException e) {
+            hibaKiir(e);
+        }
     }
     private void statueListaFeltolt() {
         try {
@@ -97,7 +129,7 @@ public class MainController extends Controller {
             hibaKiir(e);
         }
     }
-    private void PaintingListaFeltolt() {
+    private void paintingListaFeltolt() {
         try {
             List<Painting> paintingList = PaintingApi.getPaintings();
             paintingsTable.getItems().clear();
